@@ -11,8 +11,8 @@ public class camera_movement : MonoBehaviour
     void Start()
     {
         BushCreator bushCreator = Camera.main.GetComponent<BushCreator>();
-        bool[][] map = new bool[][] { new bool[] { true, false }, new bool[] { false, true } };
-        bushCreator.createBushesFromMap(map, new Vector2(0, 0), new Vector2(10, 10));
+        bool[][] map = BushLoading.LoadImage("b");
+        bushCreator.createBushesFromMap(map, new Vector2(0, 0), new Vector2(4, 4));
     }
 
     // Update is called once per frame

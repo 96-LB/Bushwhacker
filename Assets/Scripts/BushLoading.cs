@@ -24,7 +24,7 @@ public class BushLoading : MonoBehaviour
     }
 
 
-    static bool[][] LoadImage(string name)
+    public static bool[][] LoadImage(string name)
     {
         Texture2D texture = (Texture2D)Resources.Load($"bushes/{name}");
 
