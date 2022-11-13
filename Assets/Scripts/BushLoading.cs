@@ -8,33 +8,6 @@ public class BushLoading : MonoBehaviour
 
     private static bool[][][] images;
 
-    public void Start()
-    {
-        LoadAll();
-        debug(GetImage());
-        debug(GetImage());
-        debug(GetImage());
-        debug(GetImage());
-        debug(GetImage());
-    }
-
-    static void debug(bool[][] a) {
-        string o = "";
-        foreach (bool[] i in a)
-        {
-            foreach (bool j in i)
-                o += j ? 1 : 0;
-            o += "\n";
-        }
-        Debug.Log(o);
-
-    }
-
-    public static void LoadAll()
-    {
-        images = Resources.LoadAll<Texture2D>("bushes").Select(x => LoadTexture(x)).ToArray();
-    }
-
     private static bool[][] LoadTexture(Texture2D texture)
     {
         bool[][] output = new bool[texture.height][];
@@ -52,7 +25,24 @@ public class BushLoading : MonoBehaviour
 
     public static bool[][] GetImage()
     {
-        if (images == null || images.Length == 0) throw new System.Exception("no bushes loaded!");
+        // memoizes images
+        if (images == null) images = Resources.LoadAll<Texture2D>("bushes").Select(x => LoadTexture(x)).ToArray();
+
         return images[Random.Range(0, images.Length)];
+    }
+
+    public static bool[][] GetNoise(int width, int height, float threshold = 0.5f)
+    {
+        bool[][] output = new bool[height][];
+        for (int i = 0; i < height; i++)
+        {
+            output[i] = new bool[width];
+            for (int j = 0; j < width; j++)
+            {
+                output[i][j] = Random.Range(0, 1f) < threshold;
+            }
+        }
+
+        return output;
     }
 }
