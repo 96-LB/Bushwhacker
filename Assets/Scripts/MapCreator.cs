@@ -8,6 +8,7 @@ public class MapCreator : MonoBehaviour
     void Start()
     {
         BushCreator bushCreator = Camera.main.GetComponent<BushCreator>();
+        BushLoading.LoadAll();
         bool[][] map = BushLoading.GetImage();
         bushCreator.createBushesFromMap(map, new Vector2(0, 0), new Vector2(4, 4));
     }
