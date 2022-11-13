@@ -34,7 +34,7 @@ public class BushLoading : MonoBehaviour
             output[i] = new bool[texture.width];
             for (int j = 0; j < texture.width; j++)
             {
-                output[i][j] = texture.GetPixel(j, texture.height - 1 - i) == Color.black;
+                output[i][j] = texture.GetPixel(j, i) == Color.black;
             }
         }
 
