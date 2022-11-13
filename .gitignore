@@ -118,8 +118,4 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-# uhh i hope this works
-*.unity
-*.unity.meta
-
 UserSettings
