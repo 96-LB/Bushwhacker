@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class camera_movement : MonoBehaviour
+public class CameraMovement : MonoBehaviour
 {
 
     public GameObject playerGameObject;
@@ -11,7 +11,7 @@ public class camera_movement : MonoBehaviour
     void Start()
     {
         BushCreator bushCreator = Camera.main.GetComponent<BushCreator>();
-        bool[][] map = BushLoading.LoadImage("b");
+        bool[][] map = BushLoading.GetImage();
         bushCreator.createBushesFromMap(map, new Vector2(0, 0), new Vector2(4, 4));
     }
 
