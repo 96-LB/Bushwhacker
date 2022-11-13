@@ -412,6 +412,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lawn
       objectReference: {fileID: 0}
+    - target: {fileID: 6868816494164021099, guid: d59100826305ecd4ebbc9db08c30f342, type: 3}
+      propertyPath: m_Color.b
+      value: 0.37713596
+      objectReference: {fileID: 0}
+    - target: {fileID: 6868816494164021099, guid: d59100826305ecd4ebbc9db08c30f342, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7075472
+      objectReference: {fileID: 0}
+    - target: {fileID: 6868816494164021099, guid: d59100826305ecd4ebbc9db08c30f342, type: 3}
+      propertyPath: m_Color.r
+      value: 0.43058482
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d59100826305ecd4ebbc9db08c30f342, type: 3}
 --- !u!1 &1163828666
@@ -517,6 +529,7 @@ MonoBehaviour:
   rushPower: 1000
   speed: 1500
   turnMult: 3
+  drag: 5
 --- !u!50 &1163828671
 Rigidbody2D:
   serializedVersion: 4
@@ -566,6 +579,7 @@ GameObject:
   - component: {fileID: 1348821078}
   - component: {fileID: 1348821077}
   - component: {fileID: 1348821081}
+  - component: {fileID: 1348821082}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -652,6 +666,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerGameObject: {fileID: 1163828666}
+--- !u!114 &1348821082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348821076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2b1e4989e7240fda4ec08d452e1000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bushPreFab: {fileID: 0}
+  lawn: {fileID: 1755411864}
 --- !u!1 &1755411864
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,7 +739,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.45601913, g: 0.6886792, b: 0.41255784, a: 1}
+  m_Color: {r: 0.43058482, g: 0.7075472, b: 0.37713596, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
