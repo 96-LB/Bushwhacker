@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BushLoading : MonoBehaviour
 {
 
+    private static bool[][][] images;
+
     public void Start()
     {
-        debug(LoadImage("a"));
-        debug(LoadImage("b"));
+        LoadAll();
+        debug(GetImage());
+        debug(GetImage());
+        debug(GetImage());
+        debug(GetImage());
+        debug(GetImage());
     }
 
     static void debug(bool[][] a) {
@@ -23,11 +30,13 @@ public class BushLoading : MonoBehaviour
 
     }
 
-
-    static bool[][] LoadImage(string name)
+    public static void LoadAll()
     {
-        Texture2D texture = (Texture2D)Resources.Load($"bushes/{name}");
+        images = Resources.LoadAll<Texture2D>("bushes").Select(x => LoadTexture(x)).ToArray();
+    }
 
+    private static bool[][] LoadTexture(Texture2D texture)
+    {
         bool[][] output = new bool[texture.height][];
         for (int i = 0; i < texture.height; i++)
         {
@@ -41,4 +50,9 @@ public class BushLoading : MonoBehaviour
         return output;
     }
 
+    public static bool[][] GetImage()
+    {
+        if (images == null || images.Length == 0) throw new System.Exception("no bushes loaded!");
+        return images[Random.Range(0, images.Length)];
+    }
 }
