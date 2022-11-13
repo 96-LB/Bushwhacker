@@ -7,12 +7,12 @@ public class BushCreator : MonoBehaviour
     public GameObject bushPreFab;
     public GameObject lawn;
 
-    public void createBushesFromMap(bool[][] map, Vector2 topLeft, Vector2 spacing)
+    public void createBushesFromMap(bool[][] map, Vector2 bottomLeft, Vector2 spacing)
     {
-        Vector2 curr = topLeft;
+        Vector2 curr = bottomLeft;
         for (int row = 0; row < map.Length; row++)
         {
-            curr.x = topLeft.x;
+            curr.x = bottomLeft.x;
             for (int col = 0; col < map[row].Length; col++)
             {
                 if (map[row][col])
