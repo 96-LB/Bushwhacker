@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    public float rushMaxCooldown = 1;
-    public float rushPower = 40;
-    public float speed = 200;
-    public float turnMult = 1;
+    public float rushMaxCooldown = 0;
+    public float rushPower = 1000;
+    public float speed = 1500;
+    public float turnMult = 3;
+    public float drag = 5;
 
     Camera cameraMain;
     Rigidbody2D rb2d;
@@ -19,7 +20,7 @@ public class movement : MonoBehaviour
     {
         cameraMain = Camera.main;
         rb2d = GetComponent<Rigidbody2D>();
-        rb2d.drag = 5;
+        rb2d.drag = drag;
     }
 
     public void Update()
@@ -40,7 +41,6 @@ public class movement : MonoBehaviour
 
     public void FixedUpdate()
     {
-        
         transform.rotation = Quaternion.Slerp(transform.rotation, desiredRot, 0.1f * turnMult);
         rb2d.AddForce(transform.up * speed * Time.fixedDeltaTime);
     }
