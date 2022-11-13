@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class MapCreator : MonoBehaviour
 {
+    public int mapWidth;
+    public int mapHeight;
+
     // Start is called before the first frame update
     void Start()
     {
-        BushCreator bushCreator = Camera.main.GetComponent<BushCreator>();
-        bool[][] map = BushLoading.GetImage();
-        bushCreator.createBushesFromMap(map, new Vector2(0, 0), new Vector2(4, 4));
+        CreateMap(mapWidth, mapHeight);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CreateMap(int width, int height)
     {
-        
+        BushCreator bushCreator = Camera.main.GetComponent<BushCreator>();
+        bool[][] map = BushLoading.GetNoise(width, height);
+        bushCreator.createBushesFromMap(map, new Vector2(-30, -30), new Vector2(4, 4));
     }
 }
