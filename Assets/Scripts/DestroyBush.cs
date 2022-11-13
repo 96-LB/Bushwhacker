@@ -2,33 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destroy : MonoBehaviour
+public class DestroyBush : MonoBehaviour
 {
     public Transform hitPoint;
-    public float hitRange = 0.5f;
     public LayerMask bushLayer;
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetMouseButtonDown(1)) {
+        if (Input.GetMouseButtonDown(0)) {
             Hit();
         }
     }
 
     void Hit() {
-        Collider2D[] bushesHit = Physics2D.OverlapCircleAll(hitPoint.position, hitRange, bushLayer);
+        Collider2D[] bushesHit = new Collider2D[10];
+        Collider2D destroyCollider = hitPoint.GetComponent<Collider2D>();
+    
+        int size = PhysicsScene2D.OverlapCollider(destroyCollider, bushesHit, bushLayer);
 
-        foreach (Collider2D bush in bushesHit) {
-            Debug.Log("Player hit " + bush.name);
+        for (int i = 0; i < size; i++) {
+            Collider2D bush = bushesHit[i];
             Destroy(bush.gameObject);
-        }
-    }
 
-    void OnDrawGizmosSelected() {
-        if (hitPoint == null) {
-            return;
+            Debug.Log("Player hit " + bush.gameObject.name);
         }
-
-        Gizmos.DrawWireSphere(hitPoint.position, hitRange);
     }
 }

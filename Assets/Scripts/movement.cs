@@ -29,7 +29,7 @@ public class movement : MonoBehaviour
         Vector2 vRot = new Vector2(worldMousePos.x - transform.position.x, worldMousePos.y - transform.position.y);
         desiredRot = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(vRot.y, vRot.x) - 90);
 
-        if (Input.GetMouseButtonDown(0) && Time.time > rushTimer)
+        if (Input.GetMouseButtonDown(1) && Time.time > rushTimer)
         {
             rb2d.velocity = Vector2.zero;
             rb2d.AddForce(transform.up * rushPower);
