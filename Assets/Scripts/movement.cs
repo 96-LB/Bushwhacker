@@ -34,6 +34,7 @@ public class movement : MonoBehaviour
 
     public void FixedUpdate()
     {
+        transform.rotation = Quaternion.Slerp(transform.rotation, desiredRot, 0.1f);
         if (rush)
         {
             if (!rushing)
