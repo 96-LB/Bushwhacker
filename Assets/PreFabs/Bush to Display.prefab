@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 707539498920668990}
   - component: {fileID: 707539498920668989}
-  m_Layer: 6
-  m_Name: Bush
+  m_Layer: 0
+  m_Name: Bush to Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.016391562, g: 0.2924528, b: 0.0124154445, a: 1}
+  m_Color: {r: 0.5849056, g: 0.41343132, b: 0.0744927, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
