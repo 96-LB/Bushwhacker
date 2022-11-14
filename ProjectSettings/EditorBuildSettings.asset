@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: bddb53df72fa34ccdb6abfd70ea4b7cc
+  - enabled: 1
+    path: Assets/Scenes/vexor_scene.unity
+    guid: 1dd5e30f5028b473086dc4231b047b42
   m_configObjects: {}
