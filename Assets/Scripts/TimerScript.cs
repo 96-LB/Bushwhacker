@@ -7,7 +7,7 @@ public class TimerScript : MonoBehaviour
 {
 
     public Image timer;
-    public float time = 5;
+    public float downTime = 5, chopTime = 15;
     float startTime;
     float endTime;
 
@@ -24,9 +24,9 @@ public class TimerScript : MonoBehaviour
 
         if (Time.time > endTime)
         {
-            startTime = Time.time;
-            endTime = startTime + time;
-            GameManager.ToggleGameState();
+            startTime = endTime = Time.time;
+            endTime += GameManager.ToggleGameState() ? chopTime : downTime;
+            
         }
     }
 }

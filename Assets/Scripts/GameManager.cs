@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    static bool chopping = false;
+    static bool chopping = true;
     static GameObject[][] bushes;
 
 
@@ -26,13 +26,13 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public static void ToggleGameState()
+    public static bool ToggleGameState()
     {
         chopping = !chopping;
         DestroyBushes();
         if (chopping)
         {
-            bool[][] map = BushLoading.GetNoise(17, 17, .8f);
+            bool[][] map = BushLoading.GetNoise(17, 17, .85f);
             GameObject bush = Resources.Load<GameObject>("Prefabs/bush");
             bushes = BushCreator.createBushesFromMap(map, bush, new Vector2(-8, -8), new Vector2(1, 1));
         }
@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
             Vector2 pos = new Vector2(-map[0].Length / 2, -map.Length / 2);
             bushes = BushCreator.createBushesFromMap(map, bush, pos, new Vector2(1, 1));
         }
+        return chopping;
     }
 
 

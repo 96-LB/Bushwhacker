@@ -15,11 +15,11 @@ public class DestroyBush : MonoBehaviour
     }
 
     void Hit() {
-        Collider2D[] bushesHit = new Collider2D[10];
+        Collider2D[] bushesHit = new Collider2D[100];
         Collider2D destroyCollider = hitPoint.GetComponent<Collider2D>();
     
         int size = PhysicsScene2D.OverlapCollider(destroyCollider, bushesHit, bushLayer);
-
+        Debug.Log(bushesHit[0]);
         for (int i = 0; i < size; i++) {
             Collider2D bush = bushesHit[i];
             Destroy(bush.gameObject);
