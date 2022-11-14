@@ -34,7 +34,6 @@ public class movement : MonoBehaviour
             rb2d.velocity = Vector2.zero;
             rb2d.AddForce(transform.up * rushPower);
             rushTimer = Time.time + rushMaxCooldown;
-            Debug.Log("dash!");
         }
     }
 
