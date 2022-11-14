@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
 
 
 
-    static bool chopping = true;
+    static bool started = false;
+    static bool chopping = false;
     static GameObject[][] bushes;
-
+    static List<int> scores = new List<int>();
+    static bool[][] goal;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +30,19 @@ public class GameManager : MonoBehaviour
 
     public static bool ToggleGameState()
     {
-        chopping = !chopping;
+        if (started)
+        {
+            if (!(chopping = !chopping)) // evil line
+            {
+                scores.Add(Mathf.RoundToInt(10000 * Score.MaxScore(GetYard(), goal)));
+            }
+        }
+        else
+        {
+            chopping = false;
+            started = true;
+        }
+
         DestroyBushes();
         if (chopping)
         {
@@ -38,18 +52,20 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            bool[][] map = BushLoading.GetImage();
+
+            goal = BushLoading.GetImage();
             GameObject bush = Resources.Load<GameObject>("Prefabs/fakebush");
-            Vector2 pos = new Vector2(-map[0].Length / 2, -map.Length / 2);
-            bushes = BushCreator.createBushesFromMap(map, bush, pos, new Vector2(1, 1));
+            Vector2 pos = new Vector2(-goal[0].Length / 2, -goal.Length / 2);
+            bushes = BushCreator.createBushesFromMap(goal, bush, pos, new Vector2(1, 1));
         }
+
         return chopping;
     }
 
 
     public static void DestroyBushes()
     {
-        if(bushes != null)
+        if (bushes != null)
             foreach (GameObject[] i in bushes)
                 foreach (GameObject j in i)
                     Destroy(j);
@@ -57,8 +73,13 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public bool[][] GetYard()
+    public static bool[][] GetYard()
     {
         return bushes.Select(row => row.Select(x => (bool)x).ToArray()).ToArray();
+    }
+
+    public static int[] GetScores()
+    {
+        return scores.ToArray();
     }
 }

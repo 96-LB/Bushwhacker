@@ -20,7 +20,6 @@ public class BushScript : MonoBehaviour
         }
     }
 
-    public Sprite test;
     public Probability[] mutations;
 
     // Start is called before the first frame update
