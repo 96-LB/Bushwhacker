@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class BushCreator : MonoBehaviour
 {
-    public GameObject bushPreFab;
-    public GameObject lawn;
 
-    public GameObject[][] createBushesFromMap(bool[][] map, Vector2 bottomLeft, Vector2 spacing)
+    public static GameObject[][] createBushesFromMap(bool[][] map, GameObject bush, Vector2 bottomLeft, Vector2 spacing)
     {
         GameObject[][] bushes = new GameObject[map.Length][];
         Vector2 curr = bottomLeft;
@@ -19,7 +17,7 @@ public class BushCreator : MonoBehaviour
             {
                 if (map[row][col])
                 {
-                    bushes[row][col] = Instantiate(bushPreFab, new Vector3(curr.x, curr.y, 0), Quaternion.identity);
+                    bushes[row][col] = Instantiate(bush, new Vector3(curr.x, curr.y, 0), Quaternion.identity);
                 }
                 curr.x += spacing.x;
             }

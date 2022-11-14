@@ -14,7 +14,7 @@ public class TimerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -26,6 +26,7 @@ public class TimerScript : MonoBehaviour
         {
             startTime = Time.time;
             endTime = startTime + time;
+            GameManager.ToggleGameState();
         }
     }
 }

@@ -7,9 +7,10 @@ public class MapCreator : MonoBehaviour
 {
     public int mapWidth;
     public int mapHeight;
+    public GameObject bush;
 
     GameObject[][] bushes;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +19,8 @@ public class MapCreator : MonoBehaviour
 
     public void CreateMap(int width, int height)
     {
-        BushCreator bushCreator = Camera.main.GetComponent<BushCreator>();
         bool[][] map = BushLoading.GetNoise(width, height);
-        bushes = bushCreator.createBushesFromMap(map, new Vector2(-30, -30), new Vector2(4, 4));
+        bushes = BushCreator.createBushesFromMap(map, bush, new Vector2(-30, -30), new Vector2(4, 4));
     }
 
     public bool[][] GetYard()
