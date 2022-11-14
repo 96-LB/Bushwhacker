@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ScoresScript : MonoBehaviour
 {
+    public bool total = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,6 @@ public class ScoresScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<TextMeshProUGUI>().text = "SCORES:\n" + string.Join('\n', GameManager.GetScores());
+        GetComponent<TextMeshProUGUI>().text = total ? ""+GameManager.GetScore() : "SCORES:\n" + string.Join('\n', GameManager.GetScores());
     }
 }

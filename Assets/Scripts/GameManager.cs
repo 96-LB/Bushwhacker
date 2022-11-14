@@ -2,11 +2,13 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
 
+    const int ROUNDS = 5;
 
 
     static bool started = false;
@@ -14,6 +16,7 @@ public class GameManager : MonoBehaviour
     static GameObject[][] bushes;
     static List<int> scores = new List<int>();
     static bool[][] goal;
+    static int round = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +42,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            scores.Clear();
+            round = 0;
             chopping = false;
             started = true;
         }
@@ -52,6 +57,12 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            round++;
+            if (round > ROUNDS)
+            {
+                started = false;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
 
             goal = BushLoading.GetImage();
             GameObject bush = Resources.Load<GameObject>("Prefabs/fakebush");
@@ -76,6 +87,11 @@ public class GameManager : MonoBehaviour
     public static bool[][] GetYard()
     {
         return bushes.Select(row => row.Select(x => (bool)x).ToArray()).ToArray();
+    }
+
+    public static int GetScore()
+    {
+        return scores.Sum();
     }
 
     public static int[] GetScores()
