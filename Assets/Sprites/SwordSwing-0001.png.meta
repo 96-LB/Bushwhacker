@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bba685e97e89e2148849537daba2fc85
+guid: 90e4419c56140d24f981bb72d702144c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,64 +105,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sword-0001_0
+      name: SwordSwing-0001_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
         height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1f11be4c958f3f48ac7648d6e345a27
-      internalID: 828842068
+      spriteID: a15840c02f28add4c99b15b1e854b55b
+      internalID: -1616499710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sword-0001_1
+      name: SwordSwing-0001_1
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
         height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e141f730be984b46b6339b9bf9752c8
-      internalID: 1316510740
+      spriteID: 6d1710f282a31bb4f98f49706b499fa7
+      internalID: -1319183525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sword-0001_2
+      name: SwordSwing-0001_2
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 64
         height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ca89216747fc6146819d2b5119e1f7e
-      internalID: -739107035
+      spriteID: 1dc5ac05ada5c8b46be38b18b6edbc48
+      internalID: 558289826
       vertices: []
       indices: 
       edges: []
@@ -178,9 +178,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sword-0001_2: -739107035
-      Sword-0001_1: 1316510740
-      Sword-0001_0: 828842068
+      SwordSwing-0001_2: 558289826
+      SwordSwing-0001_1: -1319183525
+      SwordSwing-0001_0: -1616499710
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
