@@ -15,12 +15,17 @@ public class movement : MonoBehaviour
     float rushTimer;
     Vector3 worldMousePos;
     Quaternion desiredRot;
+    Quaternion currentRot;
+    Animator animator;
+    SpriteRenderer sr;
 
     public void Start()
     {
         cameraMain = Camera.main;
         rb2d = GetComponent<Rigidbody2D>();
         rb2d.drag = drag;
+        animator = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public void Update()
@@ -32,15 +37,35 @@ public class movement : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && Time.time > rushTimer)
         {
             rb2d.velocity = Vector2.zero;
-            rb2d.AddForce(transform.up * rushPower);
+            rb2d.AddForce(transformUp() * rushPower);
             rushTimer = Time.time + rushMaxCooldown;
         }
+
+        if (Mathf.Abs(transformUp().x) > Mathf.Abs(transformUp().y))
+        {
+            animator.Play("PlayerSide");
+            sr.flipX = transformUp().x < 0;
+            sr.sortingOrder = 97;
+        }
+        else
+        {
+            animator.Play(transformUp().y > 0 ? "PlayerBack" : "PlayerFront");
+            sr.sortingOrder = transformUp().y > 0 ? 97 : 95;
+        }
+
+        transform.GetChild(0).rotation = currentRot;
+        transform.GetChild(0).localPosition = transformUp();
     }
 
 
     public void FixedUpdate()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, desiredRot, 0.1f * turnMult);
-        rb2d.AddForce(transform.up * speed * Time.fixedDeltaTime);
+        currentRot = Quaternion.Slerp(currentRot, desiredRot, 0.1f * turnMult);
+        rb2d.AddForce(transformUp() * speed * Time.fixedDeltaTime);
+    }
+
+    Vector3 transformUp()
+    {
+        return currentRot * Vector3.up;
     }
 }

@@ -22,8 +22,8 @@ public class DestroyBush : MonoBehaviour
         for (int i = 0; i < size; i++) {
             Collider2D bush = bushesHit[i];
             Destroy(bush.gameObject);
-
-            Debug.Log("Player hit " + bush.gameObject.name);
         }
+
+        hitPoint.GetComponent<Animator>().Play("Sword");
     }
 }
